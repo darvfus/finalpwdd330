@@ -1,0 +1,17 @@
+{
+  "name": "fitness-progress-tracker",
+  "version": "1.0.0",
+  "description": "A simple fitness progress tracker",
+  "main": "index.js",
+  "scripts": {
+    "start": "lite-server"
+  },
+  "devDependencies": {
+    "lite-server": "^2.6.1"
+  },
+  "author": "Your Name",
+  "license": "ISC",
+  "dependencies": {
+    "chart.js": "^4.4.4"
+  }
+}
