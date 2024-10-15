@@ -1,3 +1,5 @@
+/* styles.css */
+
 /* General Styles */
 body {
     font-family: Arial, sans-serif;
@@ -178,4 +180,47 @@ footer p {
         padding: 10px 20px;
         font-size: 16px;
     }
+}
+
+
+
+
+/* Estilo para el contenedor del gráfico */
+#caloriesChartContainer {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f8f9fa; /* Color de fondo claro */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para el botón */
+#logWorkout {
+    padding: 10px 20px;
+    background-color: #007bff; /* Color de fondo del botón */
+    color: white; /* Color del texto */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Estilo para el botón en hover */
+#logWorkout:hover {
+    background-color: #0056b3; /* Color más oscuro en hover */
+}
+
+/* Estilo para el título */
+h1 {
+    text-align: center;
+    color: #343a40; /* Color de texto oscuro */
+}
+
+/* Estilo para los resultados */
+#totalCalories {
+    text-align: center;
+    font-size: 20px;
+    color: #28a745; /* Color verde */
+    margin-top: 20px;
 }

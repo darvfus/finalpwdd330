@@ -1,11 +1,25 @@
-export function logWorkout(type, duration, calories) {
-    const workouts = JSON.parse(localStorage.getItem('workouts')) || [];
-    const newWorkout = { type, duration, calories };
-    workouts.push(newWorkout);
-    localStorage.setItem('workouts', JSON.stringify(workouts));
-}
+const workoutLog = (() => {
+    let workouts = [];
 
-export function loadWorkouts() {
-    const workouts = JSON.parse(localStorage.getItem('workouts')) || [];
-    workouts.forEach(workout => console.log(workout));
-}
+    const addWorkout = (exerciseId, duration, calories) => {
+        workouts.push({ exerciseId, duration, calories });
+    };
+
+    const getTotalCalories = () => {
+        return workouts.reduce((total, workout) => total + workout.calories, 0);
+    };
+
+    const getWorkoutData = () => {
+        return workouts.map(workout => ({
+            exerciseId: workout.exerciseId,
+            duration: workout.duration,
+            calories: workout.calories
+        }));
+    };
+
+    return {
+        addWorkout,
+        getTotalCalories,
+        getWorkoutData
+    };
+})();

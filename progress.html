@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Progress Tracker</title>
+  
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript" src="app.js" defer></script>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+    <!-- Header with Responsive Menu -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">Fitness Tracker</div>
+            <input type="checkbox" id="toggle">
+            <label for="toggle" class="hamburger">&#9776;</label>
+            <div class="menu">
+                <a href="index.html">Home</a>
+                <a href="progress.html">Progress</a>
+                <a href="#progress-section">Track Workout</a>
+            </div>
+        </nav>
+    </header>
+    <h1>Fitness Progress Tracker</h1>
+
+    <div>
+        <label for="exercise">Select Exercise:</label>
+        <select id="exercise">
+            <option value="running">Running</option>
+            <option value="jumping">Jumping</option>
+            <option value="walking">Walking</option>
+            <option value="cycling">Cycling</option>
+            <option value="abdominales">Abdominales</option>
+        </select>
+
+        <label for="duration">Duration (in minutes):</label>
+        <input type="number" id="duration" min="1" value="30">
+
+        <label for="distance">Distance (km):</label>
+        <input type="number" id="distance" name="distance">
+
+        <label for="day">Select Day:</label>
+        <select id="day">
+            <option value="Monday">Monday</option>
+            <option value="Tuesday">Tuesday</option>
+            <option value="Wednesday">Wednesday</option>
+            <option value="Thursday">Thursday</option>
+            <option value="Friday">Friday</option>
+            <option value="Saturday">Saturday</option>
+            <option value="Sunday">Sunday</option>
+        </select>
+
+        <button id="logWorkout">Log Workout</button>
+    </div>
+
+    <div id="totalCalories">Total Calories Burned: 0</div>
+    <div id="calculatedSpeed">Speed: N/A</div>
+    <div id="speedPerKm">Speed per km: N/A</div>
+
+    <canvas id="caloriesChart" width="400" height="200"></canvas>
+
+    <h3>Workout Summary</h3>
+    <div id="workoutSummary"></div> <!-- Mostrar resumen de ejercicios -->
+
+    <h3>Weekly Summary</h3>
+    <div id="weeklySummary"></div> <!-- Mostrar resumen semanal -->
+
+
+    
+    <!-- Campo para ingresar el correo electrónico del usuario -->
+    <label for="userEmail">Enter your email to receive the weekly summary:</label>
+    <input type="email" id="userEmail" placeholder="you@example.com">
+    
+    <!-- Botón para enviar el resumen semanal por correo -->
+    <button id="sendWeeklySummary">Send Weekly Summary via Email</button>
+    
+
+    
+
+    <script src="app.js"></script>
+    <script>
+        // Inicializa EmailJS con tu ID de usuario
+        emailjs.init("service_9fdojkb"); // Reemplaza esto con tu ID de usuario
+    </script>
+</body>
+<footer>
+    <p>Follow us on:</p>
+    <div class="social-media">
+        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com"  target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://instagram.com"  target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://linkedin.com"  target="_blank"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+    <p>&copy; 2024 Fitness Progress Tracker</p>
+</footer>
+</html>
