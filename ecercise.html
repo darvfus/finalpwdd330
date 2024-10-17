@@ -2,15 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Fitness Progress Tracker</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Include Font Awesome for social media icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <title>Select Routine</title>
     <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
-
-    <!-- Header with Responsive Menu -->
     <header>
         <nav class="navbar">
             <div class="logo">Fitness Tracker</div>
@@ -23,19 +19,20 @@
             </div>
         </nav>
     </header>
+    <h1>Select a Body Part for Routine</h1>
+    
+    <label for="exercise-category">Choose a body part:</label>
+    <select id="exercise-category">
+        <option value="arms">Arms</option>
+        <option value="legs">Legs</option>
+        <option value="chest">Chest</option>
+        <option value="back">Back</option>
+        <option value="abs">Abs</option>
+    </select>
+    <button id="getExercises">Get Exercises</button>
 
-    <!-- Main Content -->
-    <main id="home">
-        <!-- Hero Section as per your provided design -->
-        <section class="hero">
-            <h1>Welcome to Your Fitness Journey!</h1>
-            <p>Track your workouts, set goals, and see your progress over time.</p>
-            <a href="progress.html" class="btn">Get Started</a>
-        </section>
-
-       
-
-    <!-- Footer with Social Media Links -->
+    <h2>Exercises</h2>
+    <div id="exercise-list"></div>
     <footer>
         <p>Follow us on:</p>
         <div class="social-media">
@@ -46,7 +43,6 @@
         </div>
         <p>&copy; 2024 Fitness Progress Tracker</p>
     </footer>
-
-    <script type="module" src="./app.js"></script>
+    <script src="exercise.js"></script>
 </body>
 </html>
