@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Exercises</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js CDN -->
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">Fitness Tracker</div>
+            <input type="checkbox" id="toggle">
+            <label for="toggle" class="hamburger">&#9776;</label>
+            <div class="menu">
+                <a href="index.html">Home</a>
+                <a href="running.html">running</a>
+                <a href="exercise.html">exercise</a>
+            </div>
+        </nav>
+    </header>
+    <h1>Select a Body Part for Routine</h1>
+
+    <div>
+        <label>Exercise category</label>
+        <select id="exercise-category">
+            <option value="arms">Arms</option>
+            <option value="legs">Legs</option>
+            <option value="chest">Chest</option>
+            <option value="back">Back</option>
+            <option value="abs">Abs</option>
+        </select>
+        <label>level</label>
+        <select id="exercise-level">
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+        </select>
+    
+        <button id="getExercises">Get Exercises</button>
+    </div>
+    
+    <div id="exercise-list"></div>
+    
+    <button id="calculateCalories">Show Calories Burned</button>
+    <div id="exerciseSummary"></div> <!-- Summary section for selected exercises and charts -->
+
+    <div id="individualCalories"></div>
+    
+    <canvas id="caloriesChart"></canvas>
+    
+    <div id="exerciseSummary"></div> <!-- Summary section for selected exercises and charts -->
+
+    <!-- Container for the Chart -->
+    <canvas id="caloriesChart" width="400" height="200"></canvas>
+
+    <script src="exercise.js"></script>
+</body>
+</html>
