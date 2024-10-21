@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Progress Tracker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Daniel Romero - WDD230 - Web Frontend Development">
+    <meta name="description" content="WDD 230 - Web Frontend Development Daniel Romero| course assignment portal ">
+    <meta name="author" content="Daniel Romero">
+    <meta property="og:title" content="Daniel Romero- WDD230 - Web Frontend Development">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="text/javascript" src="app.js" defer></script>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+    <!-- Header with Responsive Menu -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <picture>
+                    <a href="index.html"><img src="logo.png" alt="Daniel Image"></a>
+                </picture>
+                Fitness Tracker
+            </div>
+            <input type="checkbox" id="toggle">
+            <label for="toggle" class="hamburger">&#9776;</label>
+            <div class="menu">
+                <a href="index.html">Home</a>
+                <a href="running.html" > Running</a>
+                <a href="exercise.html">Exercise</a>
+                <a href="join.html" class="active"> Join</a>
+
+            </div>
+        </nav>
+    </header>
+    <body>
+        <main class="main1">
+            <section>
+                <div class="join-cta-text">
+                    <h3>Elevate Your achieve
+                        Fitness Tracker
+ </h3>
+                </div>
+            
+                <div class="form-container">
+                   
+        
+                    <div class="form-box">
+                        <form action="tanks.html" method="get">
+                            <div class="forms">
+                                <label class="top">First Name<span class="asterisk">*</span> <input type="text" name="fname"
+                                    id="fname" required placeholder="John"></label>
+        
+                                <label class="top">Last Name<span class="asterisk">*</span> <input type="text" name="lname"
+                                        id="lname" required placeholder="Doe"></label>
+        
+                                        <label class="top">Title/Position <input type="text" name="title" id="title" pattern="[A-Za-z -]{7,}" title="At least 7 characters, alphabets, hyphens, and spaces only" placeholder="Student"></label>
+        
+        
+                                <label class="top">Email address<span class="asterisk">*</span> <input type="email" name="email"
+                                        id="email" required placeholder="example@example.com"></label>
+        
+                                <label class="top">Phone number<span class="asterisk">*</span> <input type="tel" name="phone"
+                                        id="phone" required></label>
+        
+                                <label class="top">Business/Organization name<span class="asterisk">*</span> <input type="text"
+                                        name="company-name" id="company-name" required></label>
+        
+                                <div class="membership">Membership Level<span class="asterisk">*</span></div>
+                                <label class="side-by-side np"> <input type="radio" name="membership" id="np-membership">Free
+                                    Membership</label>
+                                <label class="side-by-side bronze"> <input type="radio" name="membership" id="bronze-membership"> Standard
+                                    Membership</label>
+                                <label class="side-by-side silver"> <input type="radio" name="membership" id="silver-membership"> Premium
+                                    Membership</label>
+                                <label class="side-by-side gold"> <input type="radio" name="membership" id="gold-membership"> Platinum
+                                    Membership</label>
+        
+                                <label class="top">Description<span class="asterisk">*</span> <textarea name="textarea"
+                                        id="textarea"></textarea></label>
+        
+                                <label class="top"> <input type="hidden" name="timestamp" id="timestamp"></label>
+        
+                                <input type="submit" value="Join Chamber">
+                            </div>
+                            
+                            <div class="benefits-box">
+                                <div>
+                                    <h2> Free Membership</h2>
+                                    <ul>
+                                        <li>Basic Workout Plans</li>
+                                        <li>Track Progress</li>
+                                        <li>Community Access</li>
+                                        <li>Educational Resources</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h2>Standard Membership</h2>
+                                    <ul>
+                                        <li>Advanced Workout Plans</li>
+                                        <li>Custom Nutrition Plans</li>
+                                        <li>Access to Exclusive Challenges</li>
+                                        <li>Discount on Partner Products</li>
+                                    </ul>
+                                </div>
+                                    
+                                <div>
+                                    <h2>Premium Membership</h2>
+                                    <ul>
+                                        <li>Personalized Coaching</li>
+                                        <li>Exclusive Group Classes</li>
+                                        <li>Early Access to Features</li>
+                                        <li>Priority Customer Support</li>
+                                    </ul>
+                                </div>
+                                    
+                                <div>
+                                    <h2>Platinum Membership</h2>
+                                    <ul>
+                                        <li>1:1 Coaching Sessions</li>
+                                        <li>VIP Access to Events</li>
+                                        <li>Concierge Service/li>
+                                        <li>Thought Leadership Content</li>
+                                        <li>Tailored Solutions</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    
+                </div>
+        
+        
+            </section>
+        </main>
+    </body>
+    <footer>
+    <p>Follow us on:</p>
+    <div class="social-media">
+        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+    <p>&copy; 2024 Fitness Progress Tracker</p>
+</footer>
+</html>

@@ -4,49 +4,77 @@
     <meta charset="UTF-8">
     <title>Fitness Progress Tracker</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Daniel Romero - WDD230 - Web Frontend Development">
+    <meta name="description" content="WDD 230 - Web Frontend Development Daniel Romero | course assignment portal">
+    <meta name="author" content="Daniel Romero">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="favicon.ico">
+
     <!-- Include Font Awesome for social media icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
 
-    <!-- Header with Responsive Menu -->
+    <!-- Header -->
     <header>
         <nav class="navbar">
-            <div class="logo">Fitness Tracker</div>
+            <div class="logo">
+                <picture>
+                    <a href="index.html">
+                        <img src="logo.png" alt="Daniel Image">
+                    </a>
+                </picture>
+                Fitness Tracker
+            </div>
             <input type="checkbox" id="toggle">
             <label for="toggle" class="hamburger">&#9776;</label>
             <div class="menu">
-                <a href="#home">Home</a>
-                <a href="running.html">running</a>
-                <a href="exercise.html">exercise</a>
+                <a href="index.html" class="active">Home</a>
+                <a href="running.html">Running</a>
+                <a href="exercise.html">Exercise</a>
+                <a href="join.html">Join</a>
             </div>
         </nav>
     </header>
 
-    <!-- Main Content -->
-    <main id="home">
-        <!-- Hero Section as per your provided design -->
-        <section class="hero">
-            <h1>Welcome to Your Fitness Journey!</h1>
-            <p>Track your workouts, set goals, and see your progress over time.</p>
-            <a href="progress.html" class="btn">Get Started</a>
-        </section>
+    <!-- Hero Section -->
+    <section class="hero">
+        <picture>
+            <img src="hero1.webp" alt="Fitness Tracker Background">
+        </picture>
+        <h1>Welcome to Your Fitness Journey!</h1>
+        <p>
+            At Fitness Progress Tracker, we believe that everyone has the potential to achieve great things. Whether you're starting your journey, looking to improve performance, or staying fit, our platform supports you every step of the way. Join us today and achieve your goals!
+        </p>
+        <a href="running.html" class="btn">Get Started</a>
+    </section>
 
-       
+    <!-- Carousel Section -->
+    <div class="carousel-container">
+        <div class="carousel-slide">
+            <img src="runing.webp" alt="Image 1">
+            <img src="exer.webp" alt="Image 2">
+            <img src="general.webp" alt="Image 3">
+        </div>
+        <button id="prevBtn">&#10094;</button>
+        <button id="nextBtn">&#10095;</button>
+    </div>
 
-    <!-- Footer with Social Media Links -->
+    <!-- Footer -->
     <footer>
         <p>Follow us on:</p>
         <div class="social-media">
             <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://twitter.com"  target="_blank"><i class="fab fa-twitter"></i></a>
-            <a href="https://instagram.com"  target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://linkedin.com"  target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
         </div>
         <p>&copy; 2024 Fitness Progress Tracker</p>
     </footer>
 
     <script type="module" src="./app.js"></script>
+    <script type="module" src="./carusel.js"></script>
+
 </body>
 </html>

@@ -1,5 +1,3 @@
-/* styles.css */
-
 /* General Styles */
 body {
     font-family: Arial, sans-serif;
@@ -18,23 +16,43 @@ header {
     align-items: center;
     padding: 15px;
     position: relative;
+    margin: 0 auto;    /* Center the navbar */
+    z-index: 100; /* Navbar encima de otros elementos */
 }
 
 .logo {
     color: white;
-    font-size: 24px;
+    font-size: 30px; /* Match the title size */
     font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Add space between the logo image and text */
+}
+.logo img {
+    width: auto;
+    height: 100%; /* Adjust logo height to match the text */
+    max-height: 50px; /* Make the height dynamic */
+}
+
+.active::before {
+    content: "🔥";
 }
 
 .menu {
     display: flex;
-    gap: 20px;
+    gap: 50px;
 }
 
 .menu a {
     color: white;
     text-decoration: none;
     font-size: 18px;
+    transition: background-color 0.3s ease;
+    padding: 1rem 2rem;
+}
+
+.menu a:hover {
+    background-color: #2ecc71;
 }
 
 .hamburger {
@@ -42,6 +60,8 @@ header {
     font-size: 24px;
     color: white;
     cursor: pointer;
+    z-index: 150; /* Asegura que la hamburguesa esté siempre visible */
+
 }
 
 #toggle {
@@ -50,22 +70,36 @@ header {
 
 /* Hero Section */
 .hero {
-    background-image: url('https://via.placeholder.com/1200x500'); /* Replace with your image */
-    background-size: cover;
-    background-position: center;
-    color: white;
+    width: 98vw; /* Ocupa todo el ancho de la ventana */
+    height: auto; /* Ajusta la altura automáticamente */
+    background-size: cover; /* La imagen cubrirá todo el contenedor */
+    background-position: center; /* Centra la imagen */
     text-align: center;
-    padding: 150px 20px;
+    color: white;
+    position: relative;
+    margin: 0; /* Elimina márgenes alrededor de la sección */
+}
+
+/* Ajusta el estilo de la imagen para que cubra el 95% del ancho */
+.hero picture img {
+    width: 98.95vw; /* Ajusta la imagen para que ocupe el 95% del ancho de la ventana */
+    height: auto; /* Mantiene la proporción de la altura */
+    object-fit: cover; /* Asegura que la imagen cubra el contenedor sin distorsionarse */
+    display: block; /* Elimina posibles espacios blancos alrededor de la imagen */
+    margin: 0 auto; /* Centra la imagen horizontalmente */
+    padding: 0;
 }
 
 .hero h1 {
     font-size: 48px;
     margin-bottom: 20px;
+    color: b;
 }
 
 .hero p {
     font-size: 24px;
     margin-bottom: 30px;
+    color: black;
 }
 
 .btn {
@@ -75,6 +109,14 @@ header {
     text-decoration: none;
     font-size: 18px;
     border-radius: 5px;
+    position: absolute; /* Para moverlo */
+    top: 20px; /* Ajusta la distancia desde la parte superior */
+    left: 20px; /* Ajusta la distancia desde la izquierda */
+    z-index: 10; /* Asegura que esté por encima de otros elementos */
+}
+
+.logWorkout {
+    margin-left: 10px;
 }
 
 /* Form Styles */
@@ -86,6 +128,11 @@ header {
 #workout-form {
     max-width: 600px;
     margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap; /* Para que los elementos se mantengan en la misma línea o pasen a la siguiente */
+    gap: 10px; /* Espacio entre los elementos */
+    align-items: center; /* Alinea verticalmente los elementos */
+
 }
 
 #workout-form label {
@@ -94,24 +141,24 @@ header {
     font-weight: bold;
 }
 
-#workout-form input {
-    width: 100%;
+#workout-form input, #workout-form select {
     padding: 10px;
     margin-bottom: 15px;
+    flex-grow: 1; /* Los inputs ocupan más espacio en una línea */
 }
 
-#workout-form button {
-    background-color: #2ecc71;
+#logWorkout {
+    padding: 10px 20px;
+    background-color: #007bff;
     color: white;
-    padding: 15px;
     border: none;
+    border-radius: 4px;
     cursor: pointer;
-    width: 100%;
-    font-size: 18px;
+    font-size: 16px;
 }
 
-#workout-form button:hover {
-    background-color: #27ae60;
+#logWorkout:hover {
+    background-color: #0056b3;
 }
 
 /* Chart Section */
@@ -143,8 +190,236 @@ footer p {
     margin: 5px 0;
 }
 
-/* Responsive Styles */
-@media screen and (max-width: 768px) {
+/* Estilo para el contenedor del gráfico */
+#caloriesChartContainer {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f8f9fa; /* Color de fondo claro */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Carousel Specific Styles */
+.carousel-container {
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel-slide {
+    display: flex;
+    width: 100%;
+}
+
+.carousel-slide img {
+    width: 100%;
+    transition: transform 0.4s ease-in-out;
+}
+
+/* Only target the buttons within the carousel to avoid conflicts */
+.carousel-container button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#prevBtn {
+    left: 10px;
+}
+
+#nextBtn {
+    right: 10px;
+}
+
+.carousel-container button:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+
+
+/*join*/
+
+h3{
+    color: black;
+    font-size: 2rem;
+    text-align: center
+  }
+  
+  .membership{
+    color:black;
+  }
+  .asterisk{
+    color:black;
+  }
+  .join-page-body section {
+      padding: 3em 2em;
+  }
+  
+  .join-page-body .join-cta-text {
+      font-style: italic;
+     color: black;
+      border-radius: 5px;
+      padding: 1em 1.5em;
+  }
+  
+  .form-container {
+      display: grid;
+      flex-direction: column;
+      align-items: center;
+      justify-items: center;
+      gap: 2rem;
+    
+  }
+  
+  .form-container .svg-box {
+      width: 70%;
+  }
+  
+  .form-container .svg-box img {
+      width: 100%;
+      height: 80%;
+  }
+  
+  .form-container form {
+        width: 100%;
+      padding-inline: 1em;
+      padding-block-start: .75em;
+      padding-block-end: 1.5em;
+      border-radius: .5rem;
+  
+      display: grid;
+  }
+  
+  .form-container form label.top {
+      display: block;
+      margin-block-start: 2.5rem;
+      color:black
+      
+  }
+  
+  .form-container form div,
+  .side-by-side {
+      display: block;
+  }
+  
+  .form-container form div {
+      margin-block-start: 2.5rem;
+      /* margin-block-end: .5rem; */
+  }
+  
+  .side-by-side {
+      padding-block-start: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      color: black;
+  }
+  
+  .form-container input[type="radio"] {
+      width: 2rem;
+      height: 2rem;
+  }
+  
+  
+  
+  
+  .form-container form input:not([type="radio"]) {
+      width: 100%;
+      max-width: 35rem;
+      height: 4.4rem;
+      
+  }
+  
+  .form-container form label.top input:required {
+      outline: 1px solid ;
+      
+  }
+  
+  .form-container form label.top input:required:valid {
+      outline-color: lime;
+  }
+  
+  .form-container textarea {
+      resize: vertical;
+      width: 100%;
+      max-width: 35rem;
+  }
+  
+  .form-container form input:not([type="radio"]),
+  .form-container form textarea {
+      display: block;
+      color: #555;
+      font-size: max(1.8rem, 1em);
+      padding: 0.25em 0.5em;
+      border: 2px solid ;
+      border-radius: 4px;
+  }
+  
+  .form-container form input:not(textarea) {
+      line-height: 1;
+  }
+  
+  .form-container form input:focus:not([type="radio"]),
+  .form-container form textarea:focus {
+      border-color: black;
+      box-shadow: 0 0 0 3px hsla(245, 100%, calc(42% + 40%), 0.8);
+      outline: 3px solid transparent;
+      transition: 180ms box-shadow ease-in-out;
+  }
+  
+  .form-container form input[type="submit"] {
+      border: none;
+      color: rgb(65, 97, 204);
+      cursor: pointer;
+      border-radius: 1rem;
+      padding-block: .75rem;
+      padding-inline: 1.5rem;
+      background-color: #4dc274;
+  
+  
+  }
+  
+  .benefits-box div {
+      background-color: #fff;
+      width: 80%;
+      padding-block: 1.5em;
+      padding-inline: 1.5em;
+      border-radius: 1rem;
+      margin: 0 auto;
+      color: black;
+  }
+  
+  .benefits-box h2 {
+      font-size: 2rem;
+   
+      text-align: center;
+      margin-block-end: 1rem;
+  }
+  
+  .benefits-box ul {
+      list-style: none;
+      margin-inline-start: 1.5rem;
+  }
+  
+  .benefits-box ul ::marker {
+      content: "✓ ";
+  }
+  
+  .thankyou-page-body section p {
+      font-size: 2rem;
+      background-color: #fff;
+      padding: 1em 0.75em;
+  }
+  /* Responsive Navbar */
+  @media screen and (max-width: 768px) {
     .menu {
         display: none;
         flex-direction: column;
@@ -170,57 +445,64 @@ footer p {
 
     .hero h1 {
         font-size: 36px;
+        color: black;
     }
 
     .hero p {
         font-size: 18px;
+        text-align: justify;
     }
 
     .btn {
         padding: 10px 20px;
         font-size: 16px;
     }
-}
+
+    #workout-form {
+        text-align: justify;
+        display: flex;
+        flex-direction: column; /* Cada elemento en su propia línea */
+        gap: 10px;
+    }
+
+    #workout-form label {
+        margin-bottom: 5px;
+    }
+
+    #workout-form input, 
+    #workout-form select {
+        padding: 10px;
+    }
+
+    /* Botón centrado y ajustado */
+    #logWorkout {
+        background-color: #4dc274;
+        color: white;
+        padding: 10px 0;
+        font-size: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-align: center;
+    }
+
+    #logWorkout:hover {
+        background-color: #3aa961;
+    }
 
 
-
-
-/* Estilo para el contenedor del gráfico */
-#caloriesChartContainer {
-    width: 80%;
-    margin: auto;
-    padding: 20px;
-    border-radius: 8px;
-    background-color: #f8f9fa; /* Color de fondo claro */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Estilo para el botón */
-#logWorkout {
-    padding: 10px 20px;
-    background-color: #007bff; /* Color de fondo del botón */
-    color: white; /* Color del texto */
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-/* Estilo para el botón en hover */
-#logWorkout:hover {
-    background-color: #0056b3; /* Color más oscuro en hover */
-}
-
-/* Estilo para el título */
-h1 {
+/* Estilo del resumen y otros datos */
+#totalCalories,
+#calculatedSpeed,
+#speedPerKm,
+#workoutSummary,
+#weeklySummary {
     text-align: center;
-    color: #343a40; /* Color de texto oscuro */
+    margin: 20px 0;
 }
 
-/* Estilo para los resultados */
-#totalCalories {
-    text-align: center;
-    font-size: 20px;
-    color: #28a745; /* Color verde */
-    margin-top: 20px;
+canvas {
+    display: block;
+    margin: 20px auto;
+}
 }
