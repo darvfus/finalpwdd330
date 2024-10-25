@@ -22,7 +22,7 @@
         <nav class="navbar">
             <div class="logo">
                 <picture>
-                    <a href="index.html"><img src="logo.png" alt="Daniel Image"></a>
+                    <a href="index.html"><img src="./image/logo.png" alt="Daniel Image"></a>
                 </picture>
                 Fitness Tracker
             </div>
@@ -54,17 +54,8 @@
         <label for="distance">Distance (mi):</label>
         <input type="number" id="distance" name="distance">
 
-        <label for="day">Select Day:</label>
-        <select id="day">
-            <option value="Monday">Monday</option>
-            <option value="Tuesday">Tuesday</option>
-            <option value="Wednesday">Wednesday</option>
-            <option value="Thursday">Thursday</option>
-            <option value="Friday">Friday</option>
-            <option value="Saturday">Saturday</option>
-            <option value="Sunday">Sunday</option>
-            
-        </select>
+        <label for="day">Select Date:</label>
+<input type="date" id="day">
  <button id="logWorkout">Log Workout</button>
     
         <!-- Moved Log Workout Button here -->
@@ -83,7 +74,7 @@
     <h3>Weekly Summary</h3>
     <div id="weeklySummary"></div> <!-- Show weekly summary -->
 
-    <script src="app.js"></script>
+    <script src="./js/app.js"></script>
  
 </body>
 <footer>

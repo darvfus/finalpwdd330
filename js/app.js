@@ -7,15 +7,15 @@ const exercises = {
     "abdominales": { id: 5, met: 6.0 }
 };
 
-let totalCalories = 0;
-let totalDistance = 0;
-const workoutData = {};
+let totalCalories = loadTotalCalories();
+let totalDistance = loadTotalDistance();
+const workoutData = loadWorkoutData() || {};
 const ctx = document.getElementById('caloriesChart').getContext('2d');
 
 const caloriesChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: [], 
+        labels: [],
         datasets: [{
             label: 'Calories Burned',
             data: [],
@@ -33,7 +33,7 @@ const caloriesChart = new Chart(ctx, {
     }
 });
 
-async function logWorkout(exerciseName, duration, day, distance = null) {
+async function logWorkout(exerciseName, duration, date, distance = null) {
     const exercise = exercises[exerciseName];
     if (!exercise) {
         console.error('Exercise not found');
@@ -44,12 +44,13 @@ async function logWorkout(exerciseName, duration, day, distance = null) {
     const caloriesBurned = caloriesPerMinute * duration;
     updateTotalCalories(caloriesBurned);
 
-    if (!workoutData[day]) {
-        workoutData[day] = { calories: 0, exercise: exerciseName, distance: 0, date: new Date().toLocaleDateString() };
+    const formattedDate = new Date(date).toLocaleDateString(); // Format date
+    if (!workoutData[formattedDate]) {
+        workoutData[formattedDate] = { calories: 0, exercise: exerciseName, distance: 0, date: formattedDate };
     }
-    workoutData[day].calories += caloriesBurned;
+    workoutData[formattedDate].calories += caloriesBurned;
     if (distance) {
-        workoutData[day].distance += distance;
+        workoutData[formattedDate].distance += distance;
         totalDistance += distance;
     }
 
@@ -63,6 +64,7 @@ async function logWorkout(exerciseName, duration, day, distance = null) {
         document.getElementById('speedPerKm').innerText = 'Speed per km: N/A';
     }
 
+    saveWorkoutData();  // Save to localStorage
     updateChart();
     updateWorkoutSummary();
     updateWeeklySummary();
@@ -91,6 +93,7 @@ async function getCaloriesPerMinute(exerciseId) {
 function updateTotalCalories(calories) {
     totalCalories += calories;
     document.getElementById('totalCalories').innerText = `Total Calories Burned: ${totalCalories}`;
+    saveTotalCalories();  // Save to localStorage
 }
 
 function updateChart() {
@@ -116,12 +119,39 @@ function updateWeeklySummary() {
     weeklySummaryDiv.innerHTML = `Total calories burned this week: ${totalCalories.toFixed(2)}. Total distance covered: ${totalDistance.toFixed(2)} km.`;
 }
 
+// Save and load data from localStorage
+function loadWorkoutData() {
+    const storedData = localStorage.getItem('workoutData');
+    return storedData ? JSON.parse(storedData) : null;
+}
+
+function saveWorkoutData() {
+    localStorage.setItem('workoutData', JSON.stringify(workoutData));
+}
+
+function loadTotalCalories() {
+    return parseFloat(localStorage.getItem('totalCalories')) || 0;
+}
+
+function saveTotalCalories() {
+    localStorage.setItem('totalCalories', totalCalories);
+}
+
+function loadTotalDistance() {
+    return parseFloat(localStorage.getItem('totalDistance')) || 0;
+}
+
+function saveTotalDistance() {
+    localStorage.setItem('totalDistance', totalDistance);
+}
+
+// Event listeners to log workouts
 document.getElementById('logWorkout').addEventListener('click', () => {
     const exerciseName = document.getElementById('exercise').value;
     const duration = parseInt(document.getElementById('duration').value);
     const distance = parseFloat(document.getElementById('distance').value) || null;
-    const day = document.getElementById('day').value;
-    logWorkout(exerciseName, duration, day, distance);
+    const date = document.getElementById('day').value; // Get date from the date input
+    logWorkout(exerciseName, duration, date, distance);
 });
 
 document.getElementById('exercise').addEventListener('change', (e) => {
@@ -134,6 +164,10 @@ document.getElementById('exercise').addEventListener('change', (e) => {
     }
 });
 
-
-
-
+// Load stored data on page load
+window.addEventListener('load', () => {
+    updateChart();
+    updateWorkoutSummary();
+    updateWeeklySummary();
+    document.getElementById('totalCalories').innerText = `Total Calories Burned: ${totalCalories}`;
+});

@@ -7,6 +7,7 @@ let caloriesData = {  // Store total calories by body part
     12: 0, // Back
     6: 0 // Abs
 };
+let totalCaloriesBurned = 0; // To keep track of total calories burned
 
 // Wait until the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
@@ -16,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const exerciseListDiv = document.getElementById('exercise-list');
     const calculateCaloriesBtn = document.getElementById('calculateCalories');
     const exerciseSummaryDiv = document.getElementById('exerciseSummary'); // Where we display selected exercises
+    const totalCaloriesDiv = document.getElementById('totalCalories'); // Where we display total calories
 
     const bodyPartCategories = {
         arms: 8,
@@ -39,6 +41,9 @@ document.addEventListener('DOMContentLoaded', () => {
         12: 'rgba(75, 192, 192, 0.6)',  // Back
         6: 'rgba(153, 102, 255, 0.6)'   // Abs
     };
+
+    // Load data from localStorage on page load
+    loadCaloriesDataFromStorage();
 
     // Fetch exercises when "Get Exercises" is clicked
     getExercisesBtn.addEventListener('click', () => {
@@ -101,14 +106,18 @@ document.addEventListener('DOMContentLoaded', () => {
     calculateCaloriesBtn.addEventListener('click', () => {
         const selectedCheckboxes = document.querySelectorAll('#exercise-list input:checked');
         resetCaloriesData(); // Reset the calorie data before calculating new totals
+        totalCaloriesBurned = 0; // Reset total calories
 
         selectedCheckboxes.forEach(cb => {
             const calories = parseInt(cb.dataset.calories);
             const bodyPartId = cb.dataset.bodyPart;
             caloriesData[bodyPartId] += calories; // Aggregate calories by body part
+            totalCaloriesBurned += calories; // Update total calories burned
         });
 
+        saveCaloriesDataToStorage(); // Save data to localStorage
         updateCaloriesChart(); // Update the chart with the new data
+        updateTotalCaloriesDisplay(); // Update the total calories display
     });
 
     // Reset calorie data
@@ -120,6 +129,29 @@ document.addEventListener('DOMContentLoaded', () => {
             12: 0,
             6: 0
         };
+    }
+
+    // Save data to localStorage
+    function saveCaloriesDataToStorage() {
+        localStorage.setItem('caloriesData', JSON.stringify(caloriesData));
+        localStorage.setItem('totalCaloriesBurned', totalCaloriesBurned);
+    }
+
+    // Load data from localStorage
+    function loadCaloriesDataFromStorage() {
+        const storedCaloriesData = localStorage.getItem('caloriesData');
+        const storedTotalCalories = localStorage.getItem('totalCaloriesBurned');
+
+        if (storedCaloriesData) {
+            caloriesData = JSON.parse(storedCaloriesData);
+        }
+
+        if (storedTotalCalories) {
+            totalCaloriesBurned = parseInt(storedTotalCalories);
+        }
+
+        updateCaloriesChart(); // Update chart with stored data
+        updateTotalCaloriesDisplay(); // Update total calories with stored data
     }
 
     // Create or update the calories chart
@@ -140,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
             datasets: [{
                 label: 'Calories Burned',
                 data: Object.values(caloriesData),
-                backgroundColor: labels.map(label => barColors[bodyPartCategories[label.toLowerCase()]])
+                backgroundColor: labels.map(label => barColors[bodyPartCategories[label.toLowerCase()]] || 'rgba(0,0,0,0)')
             }]
         };
 
@@ -175,7 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 plugins: {
                     tooltip: {
                         callbacks: {
-                            label: function(context) {
+                            label: function (context) {
                                 const bodyPart = context.label;
                                 const calories = context.raw;
                                 return `${bodyPart}: ${calories} calories`;
@@ -185,5 +217,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         });
+    }
+
+    // Update the total calories display
+    function updateTotalCaloriesDisplay() {
+        totalCaloriesDiv.innerText = `Total Calories Burned: ${totalCaloriesBurned}`;
     }
 });

@@ -4,6 +4,12 @@ body {
     margin: 0;
     background-color: #f4f4f4;
 }
+/* General Page Container */
+.container {
+    width: 90%;
+    margin: 0 auto; /* Centers the container horizontally */
+    padding: 20px 0; /* Adds vertical spacing for a cleaner look */
+}
 
 /* Header Styles */
 header {
@@ -70,7 +76,7 @@ header {
 
 /* Hero Section */
 .hero {
-    width: 98vw; /* Ocupa todo el ancho de la ventana */
+    width: 90%; /* Ocupa todo el ancho de la ventana */
     height: auto; /* Ajusta la altura automáticamente */
     background-size: cover; /* La imagen cubrirá todo el contenedor */
     background-position: center; /* Centra la imagen */
@@ -82,7 +88,7 @@ header {
 
 /* Ajusta el estilo de la imagen para que cubra el 95% del ancho */
 .hero picture img {
-    width: 98.95vw; /* Ajusta la imagen para que ocupe el 95% del ancho de la ventana */
+    width: 90vw; /* Ajusta la imagen para que ocupe el 95% del ancho de la ventana */
     height: auto; /* Mantiene la proporción de la altura */
     object-fit: cover; /* Asegura que la imagen cubra el contenedor sin distorsionarse */
     display: block; /* Elimina posibles espacios blancos alrededor de la imagen */
@@ -93,7 +99,7 @@ header {
 .hero h1 {
     font-size: 48px;
     margin-bottom: 20px;
-    color: b;
+    color: black;
 }
 
 .hero p {
