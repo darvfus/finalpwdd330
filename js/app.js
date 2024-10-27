@@ -36,7 +36,7 @@ const caloriesChart = new Chart(ctx, {
 async function logWorkout(exerciseName, duration, date, distance = null) {
     const exercise = exercises[exerciseName];
     if (!exercise) {
-        console.error('Exercise not found');
+        console.error('Ejercicio no encontrado');
         return;
     }
 
@@ -44,7 +44,7 @@ async function logWorkout(exerciseName, duration, date, distance = null) {
     const caloriesBurned = caloriesPerMinute * duration;
     updateTotalCalories(caloriesBurned);
 
-    const formattedDate = new Date(date).toLocaleDateString(); // Format date
+    const formattedDate = new Date(date).toLocaleDateString(); // Formatear la fecha
     if (!workoutData[formattedDate]) {
         workoutData[formattedDate] = { calories: 0, exercise: exerciseName, distance: 0, date: formattedDate };
     }
@@ -64,7 +64,7 @@ async function logWorkout(exerciseName, duration, date, distance = null) {
         document.getElementById('speedPerKm').innerText = 'Speed per km: N/A';
     }
 
-    saveWorkoutData();  // Save to localStorage
+    saveWorkoutData();  // Guardar en localStorage
     updateChart();
     updateWorkoutSummary();
     updateWeeklySummary();
@@ -85,7 +85,7 @@ async function getCaloriesPerMinute(exerciseId) {
         const data = await response.json();
         return data.met;
     } catch (error) {
-        console.error('Error fetching exercise data:', error);
+        console.error('Error al obtener datos del ejercicio:', error);
         return null;
     }
 }
@@ -93,7 +93,7 @@ async function getCaloriesPerMinute(exerciseId) {
 function updateTotalCalories(calories) {
     totalCalories += calories;
     document.getElementById('totalCalories').innerText = `Total Calories Burned: ${totalCalories}`;
-    saveTotalCalories();  // Save to localStorage
+    saveTotalCalories();  // Guardar en localStorage
 }
 
 function updateChart() {
@@ -119,7 +119,7 @@ function updateWeeklySummary() {
     weeklySummaryDiv.innerHTML = `Total calories burned this week: ${totalCalories.toFixed(2)}. Total distance covered: ${totalDistance.toFixed(2)} km.`;
 }
 
-// Save and load data from localStorage
+// Guardar y cargar datos desde localStorage
 function loadWorkoutData() {
     const storedData = localStorage.getItem('workoutData');
     return storedData ? JSON.parse(storedData) : null;
@@ -145,12 +145,19 @@ function saveTotalDistance() {
     localStorage.setItem('totalDistance', totalDistance);
 }
 
-// Event listeners to log workouts
+// Eventos para registrar entrenamientos
 document.getElementById('logWorkout').addEventListener('click', () => {
     const exerciseName = document.getElementById('exercise').value;
     const duration = parseInt(document.getElementById('duration').value);
     const distance = parseFloat(document.getElementById('distance').value) || null;
-    const date = document.getElementById('day').value; // Get date from the date input
+    const date = document.getElementById('day').value; // Obtener la fecha del input de fecha
+
+    // Validar que se ha seleccionado una fecha
+    if (!date) {
+        alert('The date has not been selected. Please select a date.');
+        return;
+    }
+
     logWorkout(exerciseName, duration, date, distance);
 });
 
@@ -164,10 +171,19 @@ document.getElementById('exercise').addEventListener('change', (e) => {
     }
 });
 
-// Load stored data on page load
+// Cargar datos guardados al cargar la página
 window.addEventListener('load', () => {
     updateChart();
     updateWorkoutSummary();
     updateWeeklySummary();
     document.getElementById('totalCalories').innerText = `Total Calories Burned: ${totalCalories}`;
 });
+// Event listener para el botón de Borrar Gráfica
+document.getElementById('clearChart').addEventListener('click', clearChartData);
+
+function clearChartData() {
+    caloriesChart.data.labels = []; // Vaciar las etiquetas
+    caloriesChart.data.datasets[0].data = []; // Vaciar los datos
+    caloriesChart.update(); // Actualizar la gráfica para reflejar los cambios
+}
+
