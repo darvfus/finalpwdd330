@@ -511,4 +511,22 @@ canvas {
     display: block;
     margin: 20px auto;
 }
+  /* Make the form box more compact */
+  .form-box {
+    width: 90%;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+/* Adjust button width */
+input[type="submit"] {
+    width: 100%;
+    font-size: 1rem;
+    padding: 10px;
+}
+
+/* Adjust benefits boxes */
+.benefits-box div {
+    padding: 10px;
+}
 }
